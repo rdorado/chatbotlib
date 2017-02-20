@@ -1,0 +1,27 @@
+<chatbot-def start="greeting" bot-prompt="me: " user-prompt="you: ">
+
+  <state id="greeting">
+
+	   <start>
+            <random>
+	     <sentence>hi!</sentence>
+	     <sentence>hello!</sentence>
+            </random>
+	   </start>  
+
+	   <input>
+             <case type="pattern" pattern=".*hi.*">
+               <sentence>Have a nice day!</sentence> 
+             </case>
+             <loopback>
+               <random>
+                 <sentence>Just say, hi</sentence>
+                 <sentence>It is rude not say hi</sentence>
+                 <sentence>You only need to say hi</sentence>
+               </random>
+             </loopback>
+           </input>
+
+  </state>
+
+</chatbot-def>

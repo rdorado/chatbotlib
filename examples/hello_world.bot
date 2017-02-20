@@ -1,0 +1,17 @@
+<chatbot-def start="greeting" bot-prompt="me: " user-prompt="you: ">
+
+  <state id="greeting">
+
+    <start>
+      <sentence>hello world! say something!</sentence>
+    </start>   
+   
+    <input>
+      <case type="pattern" pattern=".*">
+        <sentence delay="1.3">Ok! good bye!</sentence>
+      </case>
+    </input>
+
+  </state>
+
+</chatbot-def>

@@ -1,0 +1,84 @@
+<chatbot-def start="greeting" bot-prompt="me: " user-prompt="you: ">
+
+  <state id="greeting">
+
+    <start>
+      <sequence>
+        <sentence>Welcome!</sentence>
+        <sentence delay="2.5">Thank you, very much for taking our survey!</sentence>
+        <sentence delay="2.5">You will have to answer two yes/no questions. Please type only 'yes' or 'no'.</sentence>
+        <sentence delay="2.5">If you want to quit type 'quit', otherwise please tell us your name.</sentence>
+      </sequence>
+    </start>   
+   
+    <input>
+      <case type="pattern" pattern="quit">
+        <sentence delay="1.3">Ok! good bye!</sentence>
+      </case>
+      <case type="pattern" pattern="quit" next="end"/> 
+      <case type="pattern" pattern=".*" next="q1"/>              
+    </input>
+
+  </state>
+
+
+  <state id="q1">
+
+    <start>
+      <sentence delay="1.3">First question: do you smoke?</sentence>  
+    </start>
+
+    <input>
+      <case type="pattern" pattern="yes" next="q2"/>
+      <case type="pattern" pattern="no" next="q3"/>
+      <loopback>
+        <sentence delay="1.3">Please type only yes or no.</sentence>
+      </loopback>  
+    </input>   
+
+  </state>
+
+
+  <state id="q2">
+
+    <start>
+      <sentence delay="1.3">Do you want to quit?</sentence>  
+    </start>
+
+    <input>
+      <case type="pattern" pattern="yes" next="end"/>
+      <case type="pattern" pattern="no" next="end"/>
+      <loopback>
+        <sentence delay="1.3">Please type only yes or no.</sentence>
+      </loopback>  
+    </input>   
+
+  </state>
+
+
+  <state id="q3">
+
+    <start>
+      <sentence delay="1.3">Have you smoked in the last year?</sentence>  
+    </start>
+
+    <input>
+      <case type="pattern" pattern="yes" next="end"/>
+      <case type="pattern" pattern="no" next="end"/>
+      <loopback>
+        <sentence delay="1.3">Please type only yes or no.</sentence>
+      </loopback>  
+    </input>   
+
+  </state>
+
+
+  <state id="end">
+
+    <start>
+      <sentence delay="1.3">Thank you very much!</sentence>  
+    </start>
+
+  </state>
+
+</chatbot-def>

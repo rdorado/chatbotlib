@@ -1,0 +1,30 @@
+<chatbot-def start="greeting" bot-prompt="me: " user-prompt="you: ">
+
+  <state id="greeting">
+
+    <start>
+      <random>
+        <sentence delay="0.4">hi!</sentence>
+        <sentence delay="0.4">hello!</sentence>
+      </random>
+      <sentence delay="1.9">How are you?</sentence>
+      <random>
+        <sequence>
+          <sentence delay="2.1">Are you ok?</sentence>
+          <sentence delay="2.1">hello?</sentence>
+        </sequence>
+        <sequence>
+          <sentence delay="2.1">Is this a good time?</sentence>
+          <sentence delay="2.1">Seems your are busy....</sentence>
+        </sequence>
+      </random>  
+    </start>   
+   
+    <input>
+      <case type="pattern" pattern="(.*)">
+        <sentence delay="1.4">Good bye!</sentence>
+      </case>
+    </input>
+  </state>
+
+</chatbot-def>
