@@ -12,7 +12,7 @@ Chatbotlib is a library that allows to define a chat (more to come...)
 
 Download the source code or clone the repository:
 
-``` git clone htps://github.com/ 
+```git clone htps://github.com/ 
 ```
 
 ## Running the examples
@@ -20,7 +20,7 @@ Download the source code or clone the repository:
 To run the examples just type 
 
 
-``` path_to_chatlib>  python runbot.py -i botfile
+```path_to_chatlib>  python runbot.py -i botfile
 ```
 
 Where *path_to_chatlib* is the root directory of the project and *botfile* is an bot definition xml.
