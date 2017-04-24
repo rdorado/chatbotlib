@@ -20,9 +20,6 @@ class Chatbot:
 
    def addFunction(self, string):
       self.functions.append(string)
-   
-   def loadFunctions(self):
-       loadFunctions(self.functions)
 
    def isFinished(self):
       return self.finished

@@ -28,7 +28,6 @@ def load(filename):
          readFunction(bot,el)
 
     bot.setReady()
-    bot.loadFunctions()
     return bot
     
   except FileNotFoundError as err:
