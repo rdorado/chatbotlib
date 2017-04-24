@@ -24,14 +24,26 @@ def load(filename):
     for el in root.getchildren():
       if el.tag == "state":
          readState(bot, el)	
-    
+      elif el.tag == "function":
+         readFunction(bot,el)
+
     bot.setReady()
+    bot.loadFunctions()
     return bot
     
   except FileNotFoundError as err:
     print("No such file or directory: '"+filename+"'")
     sys.exit(2)
 
+def readFunction(bot, root):
+  bot.addFunction(root.text)
+
+  try:
+    exec(root.text)
+  except SyntaxError as e:
+    print("Error loading the function '"+root.attrib['name']+"'")
+    print(e)
+    sys.exit(2)
 
 def readState(bot, root):
    state = chatbot.core.State(root.attrib["id"])
@@ -98,7 +110,7 @@ def readCase(root):
    elif ctype == "function":
 
       try: 
-         resp.setFunction(root.attrib["function"])
+         resp.setFunction(root.attrib["name"])
       except KeyError: 
          print("The name of a function should be specified for a pattern of type function, line "+str(root.sourceline))
          sys.exit(2)

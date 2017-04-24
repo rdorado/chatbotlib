@@ -13,12 +13,17 @@ class Chatbot:
       self.waitingForInput = False 
       self.states = {}
       self.messageQueue = []
-
+      self.functions = []
 
    def isWaitingForInput(self):
       return self.waitingForInput 
 
+   def addFunction(self, string):
+      self.functions.append(string)
    
+   def loadFunctions(self):
+       loadFunctions(self.functions)
+
    def isFinished(self):
       return self.finished
 
@@ -53,9 +58,9 @@ class Chatbot:
       
    def processInput(self, string):
       state = self.currentState
-
+      
       for case in state.getCases():
-         if case.match(string):
+         if case.match(string, self):
             messages = []	
             case.getOutput().processAsList(messages)
             self.messageQueue.extend(messages)
@@ -181,9 +186,14 @@ class Case:
    def setFunction(self, function):
       self.function = function
 
-   def match(self, string):
+   def match(self, string, bot):
       if self.type == "pattern":
          return self.compiled.match(string) != None
+      elif self.type == "function":
+         for funct in bot.functions:
+            exec(funct) 
+         exec("global resp\nresp = "+self.function+"(string)")
+         return resp
 
    def setNextStateId(self, string):
       self.nextStateId = string 
@@ -192,7 +202,6 @@ class Case:
       return self.nextStateId
    
 
-    
 class TextContainer:
 
    def __init__(self, type=None):
