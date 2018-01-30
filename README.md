@@ -22,7 +22,7 @@ To run the examples just type
 ```
 path_to_chatlib>  python runbot.py -i botfile
 ```
-Where *path_to_chatlib* is the root directory of the project and *botfile* is an bot definition xml.
+Where *path_to_chatlib* is the root directory of the project and *botfile* is an xml file with the bot's logic.
 
 ## Tutorial and Examples
 
