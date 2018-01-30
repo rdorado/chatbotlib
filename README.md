@@ -13,7 +13,7 @@ Chatbotlib is a library that allows to define a chat (more to come...)
 Download the source code or clone the repository:
 
 ```
-git clone htps://github.com/ 
+git clone https://github.com/rdorado/chatbotlib
 ```
 
 ## Running the examples
