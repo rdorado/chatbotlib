@@ -30,24 +30,30 @@ def main(argv):
     #  work in a synchronous way. 
     #
     try:
-       bot = chatbot.loader.load(inputfile)         
+       bot = chatbot.loader.load(inputfile)      
+       bot.hello = hello   
        
        while not bot.isFinished():
 
           while not bot.isWaitingForInput():
                message = bot.getNextMessage()
-               print("bot: "+message)	
+               print(bot.getBotPrompt()+message)	
           
-          userInput = input('user: ') 
+          userInput = input(bot.getUserPrompt()) 
           bot.processInput(userInput) 
 
        while not bot.isWaitingForInput():
                message = bot.getNextMessage()
-               print("bot: "+message)	
+               if message == None: break
+               print(bot.getBotPrompt()+message)	
           
 
     except:
         traceback.print_exc()
+
+def hello(str):
+  print("Hello!")
+  return True
 
 #
 #  A function that prints the usage using a terminal

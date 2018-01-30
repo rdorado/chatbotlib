@@ -1,0 +1,32 @@
+<chatbot-def start="hello">
+
+  <function>
+def myfunc(str):
+  print("Counting keywords... ")
+  return True
+  </function>
+
+  <state id="hello">
+   <start>
+    <random>
+     <sentence>Hello</sentence>
+     <sentence>How is it going?</sentence>
+    </random>
+   </start>
+   
+   <input>
+     <case type="function" name="myfunc" next="bye">
+     </case>
+   </input>
+  </state>
+
+  <state id="bye">
+    <start>
+     <random>
+      <sentence>Ok</sentence>
+      <sentence>Bye</sentence>
+     </random>
+    </start>
+  </state>
+
+</chatbot-def>
