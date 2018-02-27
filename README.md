@@ -276,7 +276,7 @@ path_to_chatlib>  python runbot.py -i survey.bot
 ```
 
 ## Future developments
-
+* Timeout feature
 * Include the execution of other 'chatbots' inside the definition of a chatbot.
 * Add entity extraction functionalities.
 * Add a probabilistic model, where the random element allows a multinomial distribution with different probabilites for each sentences. It will allow also to 'learn' from the different executions.
