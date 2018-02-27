@@ -18,19 +18,23 @@ def main(argv):
     for opt, arg in opts:
       if opt == '-i':
         inputfile = arg
-    
+
+    context = {}          
+    for i in range(2,len(argv)):
+        name, var = argv[i].partition("=")[::2]
+        context[name] = var
+
     if inputfile == None: 
       usage()
       sys.exit(2)
 
-       
 
     #
     #  This is the main part. It shows how to use the current implementation to 
     #  work in a synchronous way. 
     #
     try:
-       bot = chatbot.loader.load(inputfile)      
+       bot = chatbot.loader.load(inputfile,context=context)      
        bot.hello = hello   
        
        while not bot.isFinished():
